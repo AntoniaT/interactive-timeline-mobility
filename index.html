@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Interactive timeline</title>
+</head>
+<style>
+#thesvg{
+       width: 100vw;
+       overflow: scroll;
+}
+</style>
+
+
+
+<div id="thesvg">
+    <div class="svgplaceholder" data-svgplaceholder="wheelcar" id="vehicle_1"></div>
+    <div class="svgplaceholder" data-svgplaceholder="bicycle" id="vehicle_2"></div>
+    <div class="svgplaceholder" data-svgplaceholder="airplane" id="vehicle_3"></div>
+
+</div>
+<div id="thebike"></div>
+
+<!-- <div id="detailsModal" class="">
+    <h1>MODAL</h1>
+    <p>CLOSE</p>
+</div> -->
+
+<template id="vehicle-data-template" class="modal">
+    <h1 data-field="title">Title</h1>
+<!--   <img class="vehicleImg" data-field="image" src="prisoner.jpg" alt="vehicle">--> 
+    <p class="text" data-field="year">2001</p>
+    <p class="text" data-field="co2">Chris Columbus</p>
+    <p class="text" data-field="population">Chris Columbus</p>
+    <p class="text" data-field="image">Chris Columbus</p>
+    <p class="closeBtn">CLOSE</p>
+
+    
+</template>
+
+<body>
+   <script src="script.js"></script> 
+</body>
+</html>
