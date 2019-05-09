@@ -56,7 +56,7 @@ function loadSVG() {
     .then( svgData => {
         console.log("SVG loaded");
     
-    // TODO: put the SVG into the DOM
+    // put the SVG into the DOM
     document.querySelector("#thesvg").insertAdjacentHTML("afterbegin", svgData);
 
     // grab the bike
@@ -66,27 +66,27 @@ function loadSVG() {
     const closeBtn = document.querySelector("#closeBtn");
 
     // and the curve
-    curve = document.querySelector("#timeline");
+    curve = document.querySelector("#timeline path");
     console.log(curve);
   
-    // TODO: Start the animation
+    //  Start the animation
     currentPosition = 0;
 
-   //    runAnimation();
+       runAnimation();
     // make bike clickable for modal
     bike.addEventListener("click", loadJSON);
     closeBtn.addEventListener("click", closeModal)
 
 // trying to inject json Data into the modal
-    const svgplaceholders = document.querySelectorAll(".svgplaceholder");
+//    const svgplaceholders = document.querySelectorAll(".svgplaceholder");
 
-    svgplaceholders.forEach(replaceSVGwithHTML);
+//    svgplaceholders.forEach(replaceSVGwithHTML);
   //  calulateSizes();
 
     })
 }
 
-function replaceSVGwithHTML(htmlElement) {
+/* function replaceSVGwithHTML(htmlElement) {
     //we got an HTMLelement with svg-svgplaceholder
     //We need to find matching SVG element
     //console.log(svgPlaceholder);
@@ -97,7 +97,7 @@ function replaceSVGwithHTML(htmlElement) {
     console.log(svgSelector);
     const svgElement = document.querySelector(svgSelector);
    // fitRetangule(svgElement, htmlElement);
-  }
+  } */
 
 
 let bike = null;
@@ -111,23 +111,21 @@ let currentPosition = 0;
 function runAnimation(){
     console.log("animate");
 
-/*     if(currentPosition < curve.getTotalLength()){
+     if(currentPosition < 3600 ){
         requestAnimationFrame(runAnimation);
-    } */
+    } 
     currentPosition += speed;
 // find the current position
+const pos = curve.getPointAtLength(currentPosition);
+console.log(pos);
 
-//const pos = curve.getPointAtLength(currentPosition);
-//console.log(pos);
+pos.x = pos.x - ( bike.getBBox().width / 2) - 1400;
+pos.y = pos.y - ( bike.getBBox().height / 2) -840;
 
-pos.x = pos.x - ( bike.getBBox().width / 2);
-pos.y = pos.y - ( bike.getBBox().height / 2);
+//if( pos.x > 1300){
+//    cancelAnimationFrame(runAnimation);
+//}
 
-if( pos.x > 1300){
-    cancelAnimationFrame(runAnimation);
-}
-
-//document.querySelector("#bike").style.transform = `translate(${xpos}px, 10px )`;
-//bike.node.style.transform = `translate(${pos.x}px, ${pos.y}px ) rotate(${pos.alpha-180}deg)`;
+document.querySelector("#bike").style.transform = `translate(${pos.x}px, ${pos.y}px )`;
 
 }

@@ -9,7 +9,7 @@
     border-radius: 5px;
     z-index: 100;
 }
-#bike{
+#bike, #Horse, #oldbus, #Car{
     transform-box: fill-box;
     transform-origin: center;
     cursor: pointer;
