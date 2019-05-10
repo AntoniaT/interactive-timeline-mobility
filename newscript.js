@@ -27,31 +27,85 @@ function loadJSON(){
             .querySelector("[data-svgplaceholder='" + obj.id + "']")
             .appendChild(clone);
             console.log("clicked!");
-            openModal();
+            openModalBike();
+
         })
     })
 }
 // SHow modal on click of vehicle
 
-function openModal(){
+function openModalBike(){
     console.log("open modal started");
-    const modal = document.querySelector("#Modal_Mockup");
-    modal.classList.remove("hide");
+    const modalBike = document.querySelector("#_ModalBike_");
+    const modalTrain = document.querySelector("#_ModalTrain_");
+
+    modalBike.classList.remove("hide");
+    modalMotorcycle.classList.remove("hide");
+    modalTrain.classList.remove("hide");
+
     // stop the vehicle
   }
+function openModalHorse(){
+    const modalHorse = document.querySelector("#_ModalHorse_");
+    modalHorse.classList.remove("hide");
+}
+function openModalCar(){
+    console.log("OPEN CAR");
+    const modalCar = document.querySelector("#_ModalCar_");
+    modalCar.classList.remove("hide");
+}
+function openModalOldbus(){
+    console.log("OPEN BUS");
+    const modalOldbus = document.querySelector("#_ModalOldbus_");
+    modalOldbus.classList.remove("hide");
+}
+function openModalPublicBus(){
+    const modalModernBus = document.querySelector("#_ModalPublicBus_");
+    modalModernBus.classList.remove("hide");
+}
+function openModalMotorcycle(){
+    const modalMotorcycle = document.querySelector("#_ModalMotorcycle_");
+    modalMotorcycle.classList.remove("hide");  
+}
+function openModalTesla(){
+    const modalTesla = document.querySelector("#_ModalTesla_");
+    modalTesla.classList.remove("hide");
+}
 // Close modal on click "close"
 
-  function closeModal(){
-    const modal = document.querySelector("#Modal_Mockup");
-
-      console.log("closed modal");
-      modal.classList.add("hide");
+function closeModalBike(){
+    const modalBike = document.querySelector("#_ModalBike_");
+      modalBike.classList.add("hide");
   }
+function closeModalHorse(){
+    const modalHorse = document.querySelector("#_ModalHorse_");
+    modalHorse.classList.add("hide");
+}
+function closeModalCar(){
+    const modalCar = document.querySelector("#_ModalCar_");
+    modalCar.classList.add("hide");
+}
+function closeModalOldbus(){
+    const modalOldbus = document.querySelector("#_ModalOldbus_");
+    modalOldbus.classList.add("hide");;
+}
+function closeModalPublicBus(){
+    const modalModernBus = document.querySelector("#_ModalPublicBus_");
+    modalModernBus.classList.add("hide");
+}
+function closeModalMotorcycle(){
+    const modalMotorcycle = document.querySelector("#_ModalMotorcycle_");
+    modalMotorcycle.classList.add("hide");  
+}
+function closeModalTesla(){
+    const modalTesla = document.querySelector("#_ModalTesla_");
+    modalTesla.classList.add("hide");
+}
 
 function loadSVG() {
     console.log("load the SVG");
 
-    fetch("timeline-test5_Mockup.svg")
+    fetch("timeline-test6_Mockup.svg")
     .then( response => response.text() )
     .then( svgData => {
         console.log("SVG loaded");
@@ -66,6 +120,8 @@ function loadSVG() {
     car = document.querySelector("#Car");
     modernBus = document.querySelector("#Modern_Bus");
     motorcycle = document.querySelector("#Motorcycle");
+    modernPlane = document.querySelector("#Modern_Airplane");
+
     tesla = document.querySelector("#Tesla");
 
     // find the marker point inside svg
@@ -73,10 +129,19 @@ function loadSVG() {
  //   console.log(bikeMarkerpos);
 
     // grab the close button
-    const closeBtn = document.querySelector("#closeBtn");
+    const closeBtnBike = document.querySelector("#closeBtnBike");
+    const closeBtnHorse = document.querySelector("#closeBtnHorse");
+    const closeBtnOldBus = document.querySelector("#closeBtnOldBus");
+    const closeBtnCar = document.querySelector("#closeBtnCar");
+    const closeBtnPublicBus = document.querySelector("#closeBtnPublicBus");
+    const closeBtnMotorcycle = document.querySelector("#closeBtnMotorcycle");
+    const closeBtnTesla = document.querySelector("#closeBtnTesla");
+    const closeBtnTrain = document.querySelector("#closeBtnBike");
+    const closeBtnAirplane = document.querySelector("#closeBtnAirplane");
+    const closeBtnModernPlane = document.querySelector("#closeBtnModernPlane");
 
     // and the curve
-    curve = document.querySelector("#timeline path");
+    curve = document.querySelector("#timeline line");
     console.log(curve);
   
     //  Start the animation
@@ -86,11 +151,30 @@ function loadSVG() {
        runAnimationCar();
        runAnimationModernBus();
        runAnimationMotorcycle();
+       runAnimationModernAirplane();
        runAnimationTesla();
 
-    // make bike clickable for modal
-    bike.addEventListener("click", loadJSON);
- //   closeBtn.addEventListener("click", closeModal)
+    // make vehicles clickable for modal
+    bike.addEventListener("click", openModalBike);
+    closeBtnBike.addEventListener("click", closeModalBike)
+    
+    horse.addEventListener("click", openModalHorse);
+    closeBtnHorse.addEventListener("click", closeModalHorse);
+   
+    oldBus.addEventListener("click", openModalOldbus);
+    closeBtnOldBus.addEventListener("click", closeModalOldbus);
+    
+    car.addEventListener("click", openModalCar);
+    closeBtnCar.addEventListener("click", closeModalCar);
+    
+    modernBus.addEventListener("click", openModalPublicBus);
+    closeBtnPublicBus.addEventListener("click", closeModalPublicBus);
+    
+    motorcycle.addEventListener("click", openModalMotorcycle);
+    closeBtnMotorcycle.addEventListener("click", closeModalMotorcycle);
+    
+    tesla.addEventListener("click", openModalTesla);
+    closeBtnTesla.addEventListener("click", closeModalTesla);
 
 // trying to inject json Data into the modal
 //    const svgplaceholders = document.querySelectorAll(".svgplaceholder");
@@ -99,6 +183,7 @@ function loadSVG() {
   //  calulateSizes();
 
     })
+    
 }
 
 /* function replaceSVGwithHTML(htmlElement) {
@@ -117,14 +202,16 @@ function loadSVG() {
 
 let bike = null;
 let curve = null;
-const speed = 2;
+const speed = 1;
 let currentPositionHorse = 0;
 let currentPositionBike = 948.5;
 let currentPositionOldbus = 1899.5;
 let currentPositionCar = 2849.5;
 let currentPositionModernBus = 3798.5;
 let currentPositionMotorcycle = 4749.5;
-let currentPositionTesla = 5698.5;
+let currentPositionModernAirplane = 4749.5;
+let currentPositionAirplane;
+let currentPositionTesla = 7599.5;
 
 
 
@@ -141,8 +228,10 @@ function runAnimationHorse(){
     console.log(pos);
 
     pos.x = pos.x - ( horse.getBBox().width / 2);
-    pos.y = pos.y - ( horse.getBBox().height / 2);
+    pos.y = pos.y - ( horse.getBBox().height/ 1.05);
     document.querySelector("#Horse").style.transform = `translate(${pos.x}px, ${pos.y}px )`;
+    document.querySelector("#_ModalHorse_").style.transform = `translate(${pos.x}px, 200px)`;
+
 }
 function runAnimationBike(){
     console.log("animate");
@@ -157,8 +246,10 @@ function runAnimationBike(){
     console.log(pos);
 
     pos.x = pos.x - ( bike.getBBox().width / 2);
-    pos.y = pos.y - ( bike.getBBox().height / 2);
+    pos.y = pos.y - ( bike.getBBox().height);
     document.querySelector("#bike").style.transform = `translate(${pos.x}px, ${pos.y}px )`;
+    document.querySelector("#_ModalBike_").style.transform = `translate(${pos.x}px, 200px)`;
+
 }
 /* bike.addEventListener("mouseover", cancelAnimation);
 function cancelAnimation(){
@@ -178,8 +269,10 @@ function runAnimationOldbus(){
     console.log(pos);
 
     pos.x = pos.x - ( oldBus.getBBox().width / 2);
-    pos.y = pos.y - ( oldBus.getBBox().height / 2);
+    pos.y = pos.y - ( oldBus.getBBox().height);
     document.querySelector("#oldbus").style.transform = `translate(${pos.x}px, ${pos.y}px )`;
+    document.querySelector("#_ModalOldbus_").style.transform = `translate(${pos.x}px, 200px)`;
+
 }
 function runAnimationCar(){
     console.log("drive the car");
@@ -194,8 +287,10 @@ function runAnimationCar(){
     console.log(pos);
 
     pos.x = pos.x - ( oldBus.getBBox().width / 2);
-    pos.y = pos.y - ( oldBus.getBBox().height / 2);
+    pos.y = pos.y - ( oldBus.getBBox().height/ 1.3);
     document.querySelector("#Car").style.transform = `translate(${pos.x}px, ${pos.y}px )`;
+    document.querySelector("#_ModalCar_").style.transform = `translate(${pos.x}px, 200px)`;
+
 }
 function runAnimationModernBus(){
     console.log("follow the modern bus please");
@@ -210,8 +305,10 @@ function runAnimationModernBus(){
     console.log(pos);
 
     pos.x = pos.x - ( oldBus.getBBox().width / 2);
-    pos.y = pos.y - (oldBus.getBBox().height);
+    pos.y = pos.y - (oldBus.getBBox().height/ 1.2);
     document.querySelector("#Modern_Bus").style.transform = `translate(${pos.x}px, ${pos.y}px )`;
+    document.querySelector("#_ModalPublicBus_").style.transform = `translate(${pos.x}px, 200px)`;
+
 }
 
 function runAnimationMotorcycle(){
@@ -227,13 +324,34 @@ function runAnimationMotorcycle(){
     console.log(pos);
 
     pos.x = pos.x - ( motorcycle.getBBox().width / 2);
-    pos.y = pos.y - ( motorcycle.getBBox().height / 2);
+    pos.y = pos.y - ( motorcycle.getBBox().height);
     document.querySelector("#Motorcycle").style.transform = `translate(${pos.x}px, ${pos.y}px )`;
+    document.querySelector("#_ModalMotorcycle_").style.transform = `translate(${pos.x}px, 160px)`;
+
+}
+
+function runAnimationModernAirplane(){
+    console.log("fly the modern plane");
+    const modernPlaneMarkerpos = 5698.5;
+
+     if(currentPositionModernAirplane < modernPlaneMarkerpos ){  
+        requestAnimationFrame(runAnimationModernAirplane);
+    } 
+    currentPositionModernAirplane += speed;
+   // find the current position
+    const pos = curve.getPointAtLength(currentPositionModernAirplane);
+    console.log(pos);
+
+    pos.x = pos.x - ( modernPlane.getBBox().width / 2);
+    pos.y = pos.y - ( modernPlane.getBBox().height);
+    document.querySelector("#Modern_Airplane").style.transform = `translate(${pos.x}px, 0px)`;
+    document.querySelector("#_ModalModernPlane_").style.transform = `translate(${pos.x}px, 160px)`;
+
 }
 
 function runAnimationTesla(){
     console.log("drive stupid tesla");
-    const teslaMarkerpos = 6649.5;
+    const teslaMarkerpos = 8549.5;
 
      if(currentPositionTesla < teslaMarkerpos ){  
         requestAnimationFrame(runAnimationTesla);
@@ -244,8 +362,12 @@ function runAnimationTesla(){
     console.log(pos);
 
     pos.x = pos.x - ( tesla.getBBox().width / 2);
-    pos.y = pos.y - ( tesla.getBBox().height / 2);
+    pos.y = pos.y - ( tesla.getBBox().height);
+
+//    document.querySelector("#Tesla").style.transform = `rotate(-15deg)`;
     document.querySelector("#Tesla").style.transform = `translate(${pos.x}px, ${pos.y}px )`;
+    document.querySelector("#_ModalTesla_").style.transform = `translate(${pos.x}px, 160px)`;
+
 }
 
 // write a reusable runAnimation function here:

@@ -9,12 +9,11 @@
     border-radius: 5px;
     z-index: 100;
 }
-#bike, #Horse, #oldbus, #Car{
+#bike, #Horse, #oldbus, #_OldBus_, #Car, #Motorcycle, #Modern_Bus, #Modern_Airplane, #Airplane, #Tesla{
     transform-box: fill-box;
     transform-origin: center;
     cursor: pointer;
     position: relative;
-    top: 100px;
 }
 .hide{
     display: none;
