@@ -136,9 +136,9 @@ function loadSVG() {
     const closeBtnPublicBus = document.querySelector("#closeBtnPublicBus");
     const closeBtnMotorcycle = document.querySelector("#closeBtnMotorcycle");
     const closeBtnTesla = document.querySelector("#closeBtnTesla");
-    const closeBtnTrain = document.querySelector("#closeBtnBike");
-    const closeBtnAirplane = document.querySelector("#closeBtnAirplane");
-    const closeBtnModernPlane = document.querySelector("#closeBtnModernPlane");
+ //   const closeBtnTrain = document.querySelector("#closeBtnBike");
+ //   const closeBtnAirplane = document.querySelector("#closeBtnAirplane");
+ //   const closeBtnModernPlane = document.querySelector("#closeBtnModernPlane");
 
     // and the curve
     curve = document.querySelector("#timeline line");
@@ -230,7 +230,7 @@ function runAnimationHorse(){
     pos.x = pos.x - ( horse.getBBox().width / 2);
     pos.y = pos.y - ( horse.getBBox().height/ 1.05);
     document.querySelector("#Horse").style.transform = `translate(${pos.x}px, ${pos.y}px )`;
-    document.querySelector("#_ModalHorse_").style.transform = `translate(${pos.x}px, 200px)`;
+    document.querySelector("#_ModalHorse_").style.transform = `translate(${pos.x}px, 160px)`;
 
 }
 function runAnimationBike(){
@@ -248,13 +248,16 @@ function runAnimationBike(){
     pos.x = pos.x - ( bike.getBBox().width / 2);
     pos.y = pos.y - ( bike.getBBox().height);
     document.querySelector("#bike").style.transform = `translate(${pos.x}px, ${pos.y}px )`;
-    document.querySelector("#_ModalBike_").style.transform = `translate(${pos.x}px, 200px)`;
+    document.querySelector("#_ModalBike_").style.transform = `translate(${pos.x}px, 160px)`;
+    
+    const stopBtn = document.querySelector("#stopBtn");
 
+    stopBtn.addEventListener("click", cancelAnimation);
+    function cancelAnimation(){
+        console.log("cancelling")
+            cancelAnimationFrame(runAnimationBike);
+    }
 }
-/* bike.addEventListener("mouseover", cancelAnimation);
-function cancelAnimation(){
-        cancelAnimationFrame(runAnimationBike);
-} */
 
 function runAnimationOldbus(){
     console.log("move the bus man");
@@ -271,7 +274,7 @@ function runAnimationOldbus(){
     pos.x = pos.x - ( oldBus.getBBox().width / 2);
     pos.y = pos.y - ( oldBus.getBBox().height);
     document.querySelector("#oldbus").style.transform = `translate(${pos.x}px, ${pos.y}px )`;
-    document.querySelector("#_ModalOldbus_").style.transform = `translate(${pos.x}px, 200px)`;
+    document.querySelector("#_ModalOldbus_").style.transform = `translate(${pos.x}px, 160px)`;
 
 }
 function runAnimationCar(){
@@ -289,7 +292,7 @@ function runAnimationCar(){
     pos.x = pos.x - ( oldBus.getBBox().width / 2);
     pos.y = pos.y - ( oldBus.getBBox().height/ 1.3);
     document.querySelector("#Car").style.transform = `translate(${pos.x}px, ${pos.y}px )`;
-    document.querySelector("#_ModalCar_").style.transform = `translate(${pos.x}px, 200px)`;
+    document.querySelector("#_ModalCar_").style.transform = `translate(${pos.x}px, 160px)`;
 
 }
 function runAnimationModernBus(){
@@ -307,7 +310,7 @@ function runAnimationModernBus(){
     pos.x = pos.x - ( oldBus.getBBox().width / 2);
     pos.y = pos.y - (oldBus.getBBox().height/ 1.2);
     document.querySelector("#Modern_Bus").style.transform = `translate(${pos.x}px, ${pos.y}px )`;
-    document.querySelector("#_ModalPublicBus_").style.transform = `translate(${pos.x}px, 200px)`;
+    document.querySelector("#_ModalPublicBus_").style.transform = `translate(${pos.x}px, 160px)`;
 
 }
 
@@ -351,7 +354,7 @@ function runAnimationModernAirplane(){
 
 function runAnimationTesla(){
     console.log("drive stupid tesla");
-    const teslaMarkerpos = 8549.5;
+    const teslaMarkerpos = 9000;
 
      if(currentPositionTesla < teslaMarkerpos ){  
         requestAnimationFrame(runAnimationTesla);
