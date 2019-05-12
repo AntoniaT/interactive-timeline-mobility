@@ -14,7 +14,7 @@ h1{
     font-size: 4em;
     padding-left: 50px;
 }
-h2{
+#stopBtn{
     font-family: 'Roboto', sans-serif;
     z-index: 2001;
     position: relative;
@@ -24,7 +24,9 @@ h2{
     font-size: 2em;
     padding-left: 50px;
     border: 2px solid #131833;
-    width: 100px;
+    width: 30px;
+    height: 30px;
+    background-color: #131833;
     padding: 0.2em;
     cursor: pointer;
 }
@@ -45,10 +47,43 @@ h2{
     cursor: pointer;
     position: relative;
 }
+#bike:hover, #Horse:hover, #oldbus:hover, #_OldBus_:hover, #Car:hover, #Motorcycle:hover, #Modern_Bus:hover, #Modern_Airplane:hover, #Airplane:hover, #Tesla:hover{
+    opacity: 0.8; 
+}
 .hide{
     display: none;
 }
 #closeBtnBike, #closeBtnHorse, #closeBtnOldBus, #closeBtnCar, #closeBtnPublicBus, #closeBtnMotorcycle, #closeBtnTesla, #closeBtnBike, #closeBtnAirplane, #closeBtnModernPlane{
     cursor: pointer;
  
+}
+#Hills_Clouds{
+    animation: float 12s linear infinite alternate-reverse;
+
+}
+@keyframes float{
+
+    50%{
+        transform: translateX(400px);
+    }
+    100%{
+        transform: translateX(0px);
+
+    }
+}
+#Birds{
+    animation: fly 6s infinite;
+
+}
+@keyframes fly{
+    20%{
+        transform: translate(200px, -100px);
+    }
+    50%{
+        transform: translate(40px, -140px);
+    }
+    100%{
+        transform: translate(0px, 0px);
+
+    }
 }
