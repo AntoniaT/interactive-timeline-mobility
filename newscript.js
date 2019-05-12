@@ -2,134 +2,11 @@ window.addEventListener("DOMContentLoaded", loadSVG);
 
 let parent = document.querySelector("#thesvg");
 
- function loadJSON(){
-    fetch("data.json")
-    .then( response => response.json())
-    .then (myJSON => {
-        console.log("JSON is loaded");
-        myJSON.forEach ( obj =>{
-            console.log(obj);
-            // clone the template
-            let template = document.querySelector("#vehicle-data-template");
-            let clone = template.cloneNode(true).content;
-
-            // put the data in the clone
-
-            clone.querySelector("[data-field=title]").textContent = obj.title;
-         //   clone.querySelector("[data-field=year]").src = obj.image + ".jpg";
-            clone.querySelector("[data-field=co2]").textContent = obj.year;
-            clone.querySelector("[data-field=co2]").textContent = obj.co2;
-            clone.querySelector("[data-field=population]").textContent = obj.population;
-            clone.querySelector("[data-field=image]").textContent = obj.image;
-
-            // append the clone to ...
-            document
-            .querySelector("[data-svgplaceholder='" + obj.id + "']")
-            .appendChild(clone);
-            console.log("clicked!");
-            openModalBike();
-            openModalHorse();
-        })
-    })
-} 
-// SHow modal on click of vehicle
-
-function openModalBike(){
-    console.log("open modal started");
-    const modalBike = document.querySelector("#_ModalBike_");
-    const modalTrain = document.querySelector("#_ModalTrain_");
-
-    modalBike.classList.remove("hide");
-
-    // stop the vehicle
-  }
-function openModalHorse(){
-    const modalHorse = document.querySelector("#_ModalHorse_");
-    modalHorse.classList.remove("hide");
-}
-function openModalCar(){
-    console.log("OPEN CAR");
-    const modalCar = document.querySelector("#_ModalCar_");
-    modalCar.classList.remove("hide");
-}
-function openModalOldbus(){
-    console.log("OPEN BUS");
-    const modalOldbus = document.querySelector("#_ModalOldbus_");
-    modalOldbus.classList.remove("hide");
-}
-function openModalOldPlane(){
-    console.log("OPEN plane");
-    const modalOldPlane = document.querySelector("#_ModalAirplane_");
-    modalOldPlane.classList.remove("hide");
-}
-function openModalModernPlane(){
-    console.log("OPEN modern plane");
-    const modalModernPlane = document.querySelector("#_ModalModernPlane_");
-    modalModernPlane.classList.remove("hide");
-}
-
-function openModalPublicBus(){
-    const modalModernBus = document.querySelector("#_ModalPublicBus_");
-    modalModernBus.classList.remove("hide");
-}
-function openModalMotorcycle(){
-    const modalMotorcycle = document.querySelector("#_ModalMotorcycle_");
-    modalMotorcycle.classList.remove("hide");  
-}
-function openModalTrain(){
-    const modalTrain = document.querySelector("#_ModalTrain_");
-    modalTrain.classList.remove("hide");
-}
-function openModalTesla(){
-    console.log("OPEN Tesla");
-
-    const modalTesla = document.querySelector("#_ModalTesla_");
-    modalTesla.classList.remove("hide");
-}
-// Close modal on click "close"
-
-function closeModalBike(){
-    const modalBike = document.querySelector("#_ModalBike_");
-      modalBike.classList.add("hide");
-  }
-function closeModalHorse(){
-    const modalHorse = document.querySelector("#_ModalHorse_");
-    modalHorse.classList.add("hide");
-}
-function closeModalCar(){
-    const modalCar = document.querySelector("#_ModalCar_");
-    modalCar.classList.add("hide");
-}
-function closeModalOldbus(){
-    const modalOldbus = document.querySelector("#_ModalOldbus_");
-    modalOldbus.classList.add("hide");;
-}
-function closeModalModernPlane(){
-    const modalModernPlane = document.querySelector("#_ModalModernPlane_");
-    modalModernPlane.classList.add("hide");
-}
-function closeModalTrain(){
-    const modalTrain = document.querySelector("#_ModalTrain_");
-    modalTrain.classList.add("hide");
-}
-function closeModalPublicBus(){
-    const modalModernBus = document.querySelector("#_ModalPublicBus_");
-    modalModernBus.classList.add("hide");
-}
-function closeModalMotorcycle(){
-    const modalMotorcycle = document.querySelector("#_ModalMotorcycle_");
-    modalMotorcycle.classList.add("hide");  
-}
-
-function closeModalTesla(){
-    const modalTesla = document.querySelector("#_ModalTesla_");
-    modalTesla.classList.add("hide");
-}
-
+// load the svg
 function loadSVG() {
     console.log("load the SVG");
 
-    fetch("timeline-test8_Mockup.svg")
+    fetch("timeline-Mockup.svg")
     .then( response => response.text() )
     .then( svgData => {
         console.log("SVG loaded");
@@ -149,27 +26,23 @@ function loadSVG() {
     tesla = document.querySelector("#Tesla");
     train = document.querySelector("#Train");
 
-    // find the marker point inside svg
- //   const bikeMarkerpos = document.querySelector("#_timelineMarker2_").x1.baseVal.value;
- //   console.log(bikeMarkerpos);
-
-    // grab the close button
-    const closeBtnBike = document.querySelector("#closeBtnBike");
-    const closeBtnHorse = document.querySelector("#closeBtnHorse");
-    const closeBtnOldBus = document.querySelector("#closeBtnOldBus");
-    const closeBtnCar = document.querySelector("#closeBtnCar");
-    const closeBtnPublicBus = document.querySelector("#closeBtnPublicBus");
-    const closeBtnMotorcycle = document.querySelector("#closeBtnMotorcycle");
-    const closeBtnTesla = document.querySelector("#closeBtnTesla");
-    const closeBtnTrain = document.querySelector("#closeBtnTrain");
-    const closeBtnAirplane = document.querySelector("#closeBtnAirplane");
-    const closeBtnModernPlane = document.querySelector("#closeBtnModernPlane");
-
-    // and the curve
+    // and the timeline
     curve = document.querySelector("#timeline line");
     console.log(curve);
-  
-    //  Start the animation
+
+  // grab the close buttons in the modal
+  const closeBtnBike = document.querySelector("#closeBtnBike");
+  const closeBtnHorse = document.querySelector("#closeBtnHorse");
+  const closeBtnOldBus = document.querySelector("#closeBtnOldBus");
+  const closeBtnCar = document.querySelector("#closeBtnCar");
+  const closeBtnPublicBus = document.querySelector("#closeBtnPublicBus");
+  const closeBtnMotorcycle = document.querySelector("#closeBtnMotorcycle");
+  const closeBtnTesla = document.querySelector("#closeBtnTesla");
+  const closeBtnTrain = document.querySelector("#closeBtnTrain");
+  const closeBtnAirplane = document.querySelector("#closeBtnAirplane");
+  const closeBtnModernPlane = document.querySelector("#closeBtnModernPlane");
+
+    //  Start the animations
        runAnimationBike();
        runAnimationHorse();
        runAnimationOldbus();
@@ -191,6 +64,9 @@ function loadSVG() {
     oldBus.addEventListener("click", openModalOldbus);
     closeBtnOldBus.addEventListener("click", closeModalOldbus);
     
+    oldPlane.addEventListener("click", openModalOldPlane);
+    closeBtnAirplane.addEventListener("click", closeModalOldPlane);
+
     modernPlane.addEventListener("click", openModalModernPlane);
     closeBtnModernPlane.addEventListener("click", closeModalModernPlane);
 
@@ -213,18 +89,107 @@ function loadSVG() {
     
 }
 
+// Show modal on click of vehicle
+
+function openModalBike(){
+    console.log("open modal started");
+    const modalBike = document.querySelector("#_ModalBike_");
+    modalBike.classList.remove("hide");
+  }
+function openModalHorse(){
+    const modalHorse = document.querySelector("#_ModalHorse_");
+    modalHorse.classList.remove("hide");
+}
+function openModalCar(){
+    const modalCar = document.querySelector("#_ModalCar_");
+    modalCar.classList.remove("hide");
+}
+function openModalOldbus(){
+    const modalOldbus = document.querySelector("#_ModalOldbus_");
+    modalOldbus.classList.remove("hide");
+}
+function openModalOldPlane(){
+    const modalOldPlane = document.querySelector("#_ModalAirplane_");
+    modalOldPlane.classList.remove("hide");
+}
+function openModalModernPlane(){
+    const modalModernPlane = document.querySelector("#_ModalModernPlane_");
+    modalModernPlane.classList.remove("hide");
+}
+
+function openModalPublicBus(){
+    const modalModernBus = document.querySelector("#_ModalPublicBus_");
+    modalModernBus.classList.remove("hide");
+}
+function openModalMotorcycle(){
+    const modalMotorcycle = document.querySelector("#_ModalMotorcycle_");
+    modalMotorcycle.classList.remove("hide");  
+}
+function openModalTrain(){
+    const modalTrain = document.querySelector("#_ModalTrain_");
+    modalTrain.classList.remove("hide");
+}
+function openModalTesla(){
+    const modalTesla = document.querySelector("#_ModalTesla_");
+    modalTesla.classList.remove("hide");
+}
+// Close modal on click "close"
+
+function closeModalBike(){
+    const modalBike = document.querySelector("#_ModalBike_");
+      modalBike.classList.add("hide");
+  }
+function closeModalHorse(){
+    const modalHorse = document.querySelector("#_ModalHorse_");
+    modalHorse.classList.add("hide");
+}
+function closeModalCar(){
+    const modalCar = document.querySelector("#_ModalCar_");
+    modalCar.classList.add("hide");
+}
+function closeModalOldbus(){
+    const modalOldbus = document.querySelector("#_ModalOldbus_");
+    modalOldbus.classList.add("hide");;
+}
+function closeModalOldPlane(){
+    const modalOldPlane = document.querySelector("#_ModalAirplane_");
+    modalOldPlane.classList.add("hide"); 
+}
+function closeModalModernPlane(){
+    const modalModernPlane = document.querySelector("#_ModalModernPlane_");
+    modalModernPlane.classList.add("hide");
+}
+function closeModalTrain(){
+    const modalTrain = document.querySelector("#_ModalTrain_");
+    modalTrain.classList.add("hide");
+}
+function closeModalPublicBus(){
+    const modalModernBus = document.querySelector("#_ModalPublicBus_");
+    modalModernBus.classList.add("hide");
+}
+function closeModalMotorcycle(){
+    const modalMotorcycle = document.querySelector("#_ModalMotorcycle_");
+    modalMotorcycle.classList.add("hide");  
+}
+function closeModalTesla(){
+    const modalTesla = document.querySelector("#_ModalTesla_");
+    modalTesla.classList.add("hide");
+}
+
+// set all variables for the right ending positions of the vehicles
+
 let bike = null;
 let curve = null;
-const speed = 1;
+let speed = 1;
 let currentPositionHorse = 0;
 let currentPositionBike = 948.5;
-let currentPositionOldbus = 1899.5;
-let currentPositionCar = 2849.5;
-let currentPositionModernBus = 3798.5;
-let currentPositionMotorcycle = 4749.5;
-let currentPositionModernAirplane = 4749.5;
+let currentPositionOldPlane = 1700;
+let currentPositionMotorcycle = 1899.5;
+let currentPositionOldbus = 2150;
+let currentPositionCar = 4500;
+let currentPositionModernBus = 2849.5;
+let currentPositionModernAirplane = 3000;
 let currentPositionTrain = 5698.5;
-let currentPositionOldPlane = 1899.5;
 let currentPositionTesla = 7599.5;
 
 
@@ -260,17 +225,10 @@ function runAnimationBike(){
     document.querySelector("#bike").style.transform = `translate(${pos.x}px, ${pos.y}px )`;
     document.querySelector("#_ModalBike_").style.transform = `translate(${pos.x}px, 160px)`;
     
-    const stopBtn = document.querySelector("#stopBtn");
-
-    stopBtn.addEventListener("click", cancelAnimation);
-    function cancelAnimation(){
-        console.log("cancelling")
-            cancelAnimationFrame(runAnimationBike);
-    }
 }
 
 function runAnimationOldbus(){
-    const oldBusMarkerpos = 2849.5;
+    const oldBusMarkerpos = document.querySelector("#_timelineMarker5_").x1.baseVal.value;
 
      if(currentPositionOldbus < oldBusMarkerpos ){  
         requestAnimationFrame(runAnimationOldbus);
@@ -286,11 +244,12 @@ function runAnimationOldbus(){
 
 }
 function runAnimationCar(){
-    const carMarkerpos = 3798.5;
+    const carMarkerpos = document.querySelector("#_timelineMarker7_").x1.baseVal.value;
 
      if(currentPositionCar < carMarkerpos ){  
         requestAnimationFrame(runAnimationCar);
     } 
+    let speed = 2;
     currentPositionCar += speed;
    // find the current position
     const pos = curve.getPointAtLength(currentPositionCar);
@@ -302,11 +261,12 @@ function runAnimationCar(){
 
 }
 function runAnimationModernBus(){
-    const modernBusMarkerpos = 4749.5;
+    const modernBusMarkerpos = document.querySelector("#_timelineMarker6_").x1.baseVal.value;
 
      if(currentPositionModernBus < modernBusMarkerpos ){  
         requestAnimationFrame(runAnimationModernBus);
     } 
+    let speed = 2;
     currentPositionModernBus += speed;
    // find the current position
     const pos = curve.getPointAtLength(currentPositionModernBus);
@@ -319,11 +279,13 @@ function runAnimationModernBus(){
 }
 
 function runAnimationMotorcycle(){
-    const motorcycleMarkerpos = 5698.5;
+    const motorcycleMarkerpos = document.querySelector("#_timelineMarker4_").x1.baseVal.value;
+
 
      if(currentPositionMotorcycle < motorcycleMarkerpos ){  
         requestAnimationFrame(runAnimationMotorcycle);
     } 
+    let speed = 2;
     currentPositionMotorcycle += speed;
    // find the current position
     const pos = curve.getPointAtLength(currentPositionMotorcycle);
@@ -336,18 +298,20 @@ function runAnimationMotorcycle(){
 }
 
 function runAnimationModernAirplane(){
-    const modernPlaneMarkerpos = 5698.5;
+    const modernPlaneMarkerpos = document.querySelector("#_timelineMarker6_").x1.baseVal.value;
 
      if(currentPositionModernAirplane < modernPlaneMarkerpos ){  
         requestAnimationFrame(runAnimationModernAirplane);
     } 
+    let speed = 3.2;
+
     currentPositionModernAirplane += speed;
    // find the current position
     const pos = curve.getPointAtLength(currentPositionModernAirplane);
 
     pos.x = pos.x - ( modernPlane.getBBox().width / 2);
     pos.y = pos.y - ( modernPlane.getBBox().height);
-    document.querySelector("#Modern_Airplane").style.transform = `translate(${pos.x}px, 0px)`;
+    document.querySelector("#Modern_Airplane").style.transform = `translate(${pos.x}px, 70px)`;
     document.querySelector("#_ModalModernPlane_").style.transform = `translate(${pos.x}px, 160px)`;
 
 }
@@ -358,6 +322,8 @@ function runAnimationTesla(){
      if(currentPositionTesla < teslaMarkerpos ){  
         requestAnimationFrame(runAnimationTesla);
     } 
+    let speed = 2.5;
+
     currentPositionTesla += speed;
    // find the current position
     const pos = curve.getPointAtLength(currentPositionTesla);
@@ -365,7 +331,6 @@ function runAnimationTesla(){
     pos.x = pos.x - ( tesla.getBBox().width / 2);
     pos.y = pos.y - ( tesla.getBBox().height);
 
-//    document.querySelector("#Tesla").style.transform = `rotate(-15deg)`;
     document.querySelector("#Tesla").style.transform = `translate(${pos.x}px, ${pos.y}px )`;
     document.querySelector("#_ModalTesla_").style.transform = `translate(${pos.x}px, 160px)`;
 
@@ -383,17 +348,19 @@ function runAnimationOldPlane(){
     pos.x = pos.x - ( oldPlane.getBBox().width / 2);
     pos.y = pos.y - ( oldPlane.getBBox().height);
 
-    document.querySelector("#Airplane").style.transform = `translate(${pos.x}px, 0px )`;
+    document.querySelector("#Airplane").style.transform = `translate(${pos.x}px, 50px)`;
     document.querySelector("#_ModalAirplane_").style.transform = `translate(${pos.x}px, 160px)`;
 
 }
 
 function runAnimationTrain(){
-    const trainMarkerpos = 6649.5;
+    const trainMarkerpos = 7700;
 
      if(currentPositionTrain < trainMarkerpos ){  
         requestAnimationFrame(runAnimationTrain);
     } 
+    let speed = 3.8;
+
     currentPositionTrain += speed;
    // find the current position
     const pos = curve.getPointAtLength(currentPositionTrain);
@@ -406,6 +373,7 @@ function runAnimationTrain(){
 
 }
 // write a reusable runAnimation function here:
+// doesn't work because I have to select the svg element in the same function --maybe try again later
 
 /* function runAnimation(param1, param2, param3, params4){
    if(params1 < params2){

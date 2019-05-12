@@ -9,27 +9,12 @@ h1{
     z-index: 2000;
     position: relative;
     top: 220px;
-    margin-top:-205px;
+    margin-top:-150px; 
     color: yellow; 
     font-size: 4em;
     padding-left: 50px;
 }
-#stopBtn{
-    font-family: 'Roboto', sans-serif;
-    z-index: 2001;
-    position: relative;
-    top: 707px;
-    left: 50px;
-    color: #131833; 
-    font-size: 2em;
-    padding-left: 50px;
-    border: 2px solid #131833;
-    width: 30px;
-    height: 30px;
-    background-color: #131833;
-    padding: 0.2em;
-    cursor: pointer;
-}
+
 .modal{
     position: relative;
     bottom: 400px;
@@ -47,19 +32,18 @@ h1{
     cursor: pointer;
     position: relative;
 }
-#bike:hover, #Horse:hover, #oldbus:hover, #_OldBus_:hover, #Car:hover, #Motorcycle:hover, #Modern_Bus:hover, #Modern_Airplane:hover, #Airplane:hover, #Tesla:hover{
+#bike:hover, #Horse:hover, #oldbus:hover, #_OldBus_:hover, #Car:hover, #Motorcycle:hover, #Modern_Bus:hover, #Modern_Airplane:hover, #Train:hover, #Airplane:hover, #Tesla:hover{
     opacity: 0.8; 
 }
 .hide{
     display: none;
 }
-#closeBtnBike, #closeBtnHorse, #closeBtnOldBus, #closeBtnCar, #closeBtnPublicBus, #closeBtnMotorcycle, #closeBtnTesla, #closeBtnBike, #closeBtnAirplane, #closeBtnModernPlane{
+#closeBtnBike, #closeBtnHorse, #closeBtnOldBus, #closeBtnCar, #closeBtnPublicBus, #closeBtnMotorcycle, #closeBtnTesla, #closeBtnModernPlane, #closeBtnAirplane{
     cursor: pointer;
- 
 }
-#Hills_Clouds{
-    animation: float 12s linear infinite alternate-reverse;
-
+.cloud1{
+    animation-delay: 1s;
+    animation: float 20s linear infinite reverse;
 }
 @keyframes float{
 
@@ -71,9 +55,49 @@ h1{
 
     }
 }
+.cloud2{
+    animation-delay: 1.5s;
+    animation: floating 20s linear infinite reverse;
+}
+@keyframes floating{
+
+    50%{
+        transform: translateX(200px);
+    }
+    100%{
+        transform: translateX(0px);
+
+    }
+}
+.cloud3{
+    animation: wavering 20s linear infinite reverse;
+}
+@keyframes wavering{
+
+    50%{
+        transform: translate(200px, 50px);
+    }
+    100%{
+        transform: translateX(0px);
+
+    }
+}
+.cloud4{
+    animation-delay: .5s;
+    animation: waver 20s linear infinite reverse;
+}
+@keyframes waver{
+
+    50%{
+        transform: translate(200px, 30px);
+    }
+    100%{
+        transform: translateX(0px);
+
+    }
+}
 #Birds{
     animation: fly 6s infinite;
-
 }
 @keyframes fly{
     20%{
@@ -82,8 +106,25 @@ h1{
     50%{
         transform: translate(40px, -140px);
     }
+    75%{
+        transform: tranlate(180px, -200px);
+    }
     100%{
         transform: translate(0px, 0px);
 
+    }
+}
+.treewave{
+    animation: treetilt 2s infinite;
+}
+@keyframes treetilt{
+
+    50%{
+        transform: rotate(.4deg);
+        transform: translate(3px);
+    }
+
+    100%{
+        transform: rotate(0deg);
     }
 }
